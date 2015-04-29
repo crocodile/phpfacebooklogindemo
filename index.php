@@ -54,7 +54,7 @@ $helper = new FacebookRedirectLoginHelper($my_base_url . 'index.php');  // login
 
 
 
-/**************** SEE IF THE ACCESS TOKEN ALREADY EXISTS IN THE PHP SESSION AND VALIDATE IT *************/
+/**************** CHECK IF THE ACCESS TOKEN ALREADY EXISTS IN THE PHP SESSION AND VALIDATE IT *************/
 if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
     debug_to_console("SESSION exists");
 
@@ -75,7 +75,7 @@ if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
 
 
 
-/**************** SEE IF THE ACCESS TOKEN ALREADY EXISTS IN THE DB AND VALIDATE IT *************/
+/****** IF NO SESSION EXISTS STILL AT THIS POINT, CHECK IF THE ACCESS TOKEN ALREADY EXISTS IN THE DB AND VALIDATE IT ******/
 if (!isset($session) || $session === null) {
     $storedLongLivedAccessToken = TokenDataBase::getLongLivedAccessToken();
     if ($storedLongLivedAccessToken !== null) {  // in DB
@@ -97,7 +97,7 @@ if (!isset($session) || $session === null) {
 
 
 
-/**************** IF NO SESSION EXISTS STILL AT THIS POINT, THEN LOOK FOR DATA FROM PREVIOUS REDIRECT *************/
+/**************** IF NO SESSION EXISTS STILL AT THIS POINT,  LOOK FOR DATA FROM PREVIOUS REDIRECT *************/
 if (!isset($session) || $session === null) {
 
     debug_to_console("No session exist");
