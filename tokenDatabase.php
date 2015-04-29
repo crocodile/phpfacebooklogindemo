@@ -16,7 +16,7 @@ class TokenDatabase {
 
     public static function getLongLivedAccessToken(){
         // Get from DB code here  BUT do not call the DB all the time, cache it locally   //TODO
-        return self::$probably_valid_token_for_testing_only; //$longLivedAccessToken;
+        return self::$longLivedAccessToken;
     }
 }
 
