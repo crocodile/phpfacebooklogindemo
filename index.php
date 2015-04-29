@@ -150,7 +150,7 @@ if (isset($session)) {
     }
 
 
-    // print profile data
+    // print API response data
     echo '<pre>' . print_r($graphObject, 1) . '</pre>';
 
     // print logout url using session and redirect_uri (logout.php page should destroy the session)
