@@ -75,7 +75,7 @@ if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
 if (!isset($session) || $session === null) {
 
     // no session exists
-    debug_to_console( "no session exist" );
+    debug_to_console( "No session exist" );
 
     try {
         $session = $helper->getSessionFromRedirect();

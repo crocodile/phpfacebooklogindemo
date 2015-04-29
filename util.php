@@ -3,9 +3,9 @@
 function debug_to_console( $data ) {
 
     if ( is_array( $data ) )
-        $output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
+        $output = "<script>console.log( 'Php debug output: " . implode( ',', $data) . "' );</script>";
     else
-        $output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
+        $output = "<script>console.log( 'Php debug output: " . $data . "' );</script>";
 
     echo $output;
 }
