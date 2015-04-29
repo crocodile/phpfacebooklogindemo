@@ -41,6 +41,10 @@ use Facebook\GraphSessionInfo;
 // This is where we put global configuration variables
 require_once('my_config_file.php');
 
+// Helper
+require_once('util.php');
+
+
 // start session
 session_start();
 
@@ -52,12 +56,14 @@ $helper = new FacebookRedirectLoginHelper($my_base_url.'index.php');
 
 // see if a existing session exists
 if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
+    debug_to_console( "Session exists" );
     // create new session from saved access_token
     $session = new FacebookSession($_SESSION['fb_token']);
 
     // validate the access_token to make sure it's still valid
     try {
         if (!$session->validate()) {
+            debug_to_console( "session -> validate "."Access token is not valid" );
             $session = null;
         }
     } catch (Exception $e) {
@@ -67,18 +73,20 @@ if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
 }
 
 if (!isset($session) || $session === null) {
+
     // no session exists
+    debug_to_console( "no session exist" );
 
     try {
         $session = $helper->getSessionFromRedirect();
     } catch (FacebookRequestException $ex) {
         // When Facebook returns an error
         // handle this better in production code
-        print_r($ex);
+        debug_to_console( "FacebookRequestException: ".$ex );
     } catch (Exception $ex) {
         // When validation fails or other local issues
         // handle this better in production code
-        print_r($ex);
+        debug_to_console( "Exception: ".$ex );
     }
 
 }
