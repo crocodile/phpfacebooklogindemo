@@ -15,4 +15,4 @@ See comments in the code for a detailed explanation. Don't forget to configure t
 For a production quality code please consider:
 * Removing logging/debugging bits
 * Remove unused Facebook library files
-* Fully implement all Facebook error scenarios additional to the ones already there.
+* Fully implement all Facebook error scenarios additional to the ones already there
