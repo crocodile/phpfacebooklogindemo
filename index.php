@@ -140,7 +140,7 @@ if (isset($session)) {
             $session = null;
             $_SESSION['fb_token'] = $session;
 
-            // REDIRECT BACK TO THE LOGIN PAGE WHEN A REQUEST FAILS DUE TO ANY OF THOSE ERROR CONDITIONS ABOVE.
+            // REDIRECT BACK TO THE LOGIN PAGE WHEN A REQUEST FAILS IF ANY OF THOSE ERROR CONDITIONS ABOVE ARE PRESENT
             header('Location: ' . $helper->getLoginUrl($facebook_api_permissions));
 
         }
