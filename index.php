@@ -75,7 +75,7 @@ if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
 
 
 
-/**************** SEE IF THE ACCESS TOKEN ALREADY EXISTS IN THE DB *************/
+/**************** SEE IF THE ACCESS TOKEN ALREADY EXISTS IN THE DB AND VALIDATE IT *************/
 if (!isset($session) || $session === null) {
     $storedLongLivedAccessToken = TokenDataBase::getLongLivedAccessToken();
     if ($storedLongLivedAccessToken !== null) {  // in DB
@@ -97,7 +97,7 @@ if (!isset($session) || $session === null) {
 
 
 
-/**************** IF NO SESSION EXISTS STILL AT THIS POINT, THEN AUTHENTICATE *************/
+/**************** IF NO SESSION EXISTS STILL AT THIS POINT, THEN LOOK FOR DATA FROM PREVIOUS REDIRECT *************/
 if (!isset($session) || $session === null) {
 
     debug_to_console("No session exist");
@@ -116,7 +116,7 @@ if (!isset($session) || $session === null) {
 
 
 
-/**************** IF WE HAVE A SESSION THEN GO AHEAD *************/
+/**************** IF WE HAVE A FACEBOOK SESSION THEN GO AHEAD *************/
 if (isset($session)) {
     $session->getLongLivedSession($my_app_id, $my_app_secret);  // After this the session is long lived 60 days
     TokenDataBase::storeLongLivedAccessToken($session->getToken());
