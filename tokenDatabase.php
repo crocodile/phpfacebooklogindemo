@@ -11,7 +11,6 @@ class TokenDatabase {
         if (self::$longLivedAccessToken !==$token) {
                 // Add/Update in DB code here... but only if values is different    //TODO
         }
-        return self::$longLivedAccessToken;
     }
 
     public static function getLongLivedAccessToken(){
