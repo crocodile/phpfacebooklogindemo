@@ -119,7 +119,7 @@ if (!isset($session) || $session === null) {
 /**************** IF WE HAVE A FACEBOOK SESSION THEN GO AHEAD *************/
 if (isset($session)) {
     $session->getLongLivedSession($my_app_id, $my_app_secret);  // After this the session is long lived 60 days
-    TokenDataBase::storeLongLivedAccessToken($session->getToken());
+    TokenDatabase::storeLongLivedAccessToken($session->getToken());
     $_SESSION['fb_token'] = $session->getToken();  // Save the Facebook token session to the browser session
     $session = new FacebookSession($_SESSION['fb_token']);
     try {
