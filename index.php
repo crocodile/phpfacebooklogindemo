@@ -77,7 +77,7 @@ if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
 
 /****** IF NO SESSION EXISTS STILL AT THIS POINT, CHECK IF THE ACCESS TOKEN ALREADY EXISTS IN THE DB AND VALIDATE IT ******/
 if (!isset($session) || $session === null) {
-    $storedLongLivedAccessToken = TokenDataBase::getLongLivedAccessToken();
+    $storedLongLivedAccessToken = TokenDatabase::getLongLivedAccessToken();
     if ($storedLongLivedAccessToken !== null) {  // in DB
         // create new session from access_token saved in db
         $session = new FacebookSession($storedLongLivedAccessToken);
