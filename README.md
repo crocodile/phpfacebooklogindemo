@@ -1,5 +1,5 @@
 
-This is a basic demo demonstrating login with the Facebook Php SDK 4.0.0
+***Facebook login flow demo*** with the Php SDK 4.0.0 using long-lived access tokens stored in a back-end DB
 
 The following files are important:
 * index.php     - Main file, where most things happen
