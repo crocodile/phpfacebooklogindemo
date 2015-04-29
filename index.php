@@ -139,8 +139,10 @@ if (isset($session)) {
             debug_to_console("Facebook Authentication Error. The subcode is " . $ex->getSubErrorCode());
             $session = null;
             $_SESSION['fb_token'] = $session;
-            // Redirect back to the login page when a request fails due to any of those error conditions above.
+
+            // REDIRECT BACK TO THE LOGIN PAGE WHEN A REQUEST FAILS DUE TO ANY OF THOSE ERROR CONDITIONS ABOVE.
             header('Location: ' . $helper->getLoginUrl($facebook_api_permissions));
+
         }
 
     } catch (Exception $ex) {
